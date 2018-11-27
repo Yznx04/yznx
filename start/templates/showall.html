@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for people in people_list %}
+        <table>
+        <tr style="border-size: 1px;">
+            <td>
+                {{ people.ID }}
+            </td>
+            <td>
+                {{ people.name}}
+            </td>
+            <td>
+                {{ people.brith }}
+            </td>
+            <td>
+                {{ people.address }}
+            </td>
+            <td>
+                {{ people.sex }}
+            </td>
+        </tr>
+        </table>
+
+
+    {% endfor %}
+</body>
+</html>

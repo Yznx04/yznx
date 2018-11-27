@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+<style type="text/css">
+  body {
+	  text-align:center;
+	  margin: 0px;
+	  padding: 0px;
+	  background-color:#fff;
+	}
+  .kuang{
+	
+	 margin:0 auto;
+	
+	 width:100%;
+	 height:100px;
+	 position:absolute;
+	 top:400px;
+	  }	
+  .	tijiao{
+	 text-align:center;
+	  }	
+  .show a:link,a:visited{
+	 text-decoration:none;
+	 font-family:"宋体";
+	 font-size:20px;
+	  } 	
+  #obj{
+	  width:100%;
+	  height:100%;
+	  /*position:absolute;
+	  top:200px;
+	  left:400px;*/
+	 opacity: 0.8;
+	  }
+</style>
+<script type="text/jscript">
+     var curIndex = 0; 
+  var timeInterval =4000; 
+  var arr = new Array(); 
+  arr[0] = "{% static 'image/bg1.jpg' %}";
+  arr[1] = "{% static 'image/bg2.jpg' %}";
+  arr[2] = "{% static 'image/bg3.jpg' %}";
+  arr[3] = "{% static 'image/bg4.jpg' %}";
+  setInterval(changeImg,timeInterval); 
+  function changeImg() { 
+   var obj = document.getElementById("obj"); 
+   if (curIndex == arr.length-1) { 
+    curIndex = 0; 
+   } else { 
+    curIndex += 1; 
+     } 
+   obj.src = arr[curIndex]; 
+  } 
+</script>
+</head>
+
+<body >
+ <div class=lunbo>
+    <img id = "obj" src="{% static 'image/bg1.jpg' %}" border = 0 />
+ 
+ <div class="kuang">
+  <form enctype="multipart/form-data" method="POST" action="{% url 'appraise' %}">
+      <tr>
+       <td >   
+        {% csrf_token %}
+      <input name="img" type="file" >
+      </td>
+      <tr>
+      <td class="tijiao">
+      <input type="submit" value="提交照片" >
+      </td>
+      </tr>
+    </form>   
+  
+</div>
+ </div>    
+  <p align="center" class="show"><a href="{% url 'showall' %}">展示所有</a></p>
+</body>
+</html>
